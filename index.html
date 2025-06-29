@@ -1,0 +1,211 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Krypton Investment</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    html, body {
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      background: #0d0d0d;
+      color: #fff;
+      overflow: hidden;
+    }
+    .layout {
+      width: 100vw;
+      height: 100vh;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 2rem 1rem;
+      overflow-y: auto;
+      background: radial-gradient(circle, #0f0f3e, #000);
+    }
+    .layout.active {
+      display: flex;
+    }
+    h1, h2 {
+      color: #00fff7;
+      text-shadow: 0 0 10px #00fff7;
+      text-align: center;
+    }
+    .btn {
+      background: linear-gradient(45deg, #00fff7, #0055ff);
+      border: none;
+      padding: 1rem 2rem;
+      margin: 1rem;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: bold;
+      color: #000;
+      box-shadow: 0 0 10px #00fff7;
+      transition: transform 0.3s, background 0.3s;
+    }
+    .btn:hover {
+      transform: scale(1.05);
+    }
+    table {
+      width: 100%;
+      max-width: 800px;
+      border-collapse: collapse;
+      background: rgba(255, 255, 255, 0.05);
+      margin: 1rem auto;
+    }
+    th, td {
+      padding: 1rem;
+      border: 1px solid #333;
+      text-align: center;
+    }
+    th {
+      background: #002244;
+      color: #00fff7;
+    }
+    .faq details {
+      margin: 0.5rem 0;
+      background: #111;
+      padding: 1rem;
+      border-radius: 10px;
+      max-width: 800px;
+    }
+    select {
+      margin: 1rem;
+      padding: 0.5rem;
+      border-radius: 8px;
+      background: #111;
+      color: #fff;
+      border: 1px solid #333;
+    }
+    .wallet-box {
+      margin-top: 1rem;
+      padding: 1rem;
+      background: #111;
+      border-radius: 10px;
+      display: none;
+      max-width: 500px;
+    }
+    .wallet-box.trc {
+      box-shadow: 0 0 10px #00ff99;
+    }
+    .wallet-box.btc {
+      box-shadow: 0 0 10px #ff9900;
+    }
+    .copy-btn {
+      margin-top: 0.5rem;
+      background: #222;
+      color: #00fff7;
+      border: 1px solid #00fff7;
+      border-radius: 5px;
+      padding: 0.4rem 1rem;
+      cursor: pointer;
+    }
+    .header-title {
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+      color: #00fff7;
+      text-shadow: 0 0 5px #00fff7;
+    }
+    #google_translate_element {
+      margin: 10px auto;
+    }
+  </style>
+</head>
+<body><section id="welcome" class="layout active">
+  <h1>Krypton Investment</h1>
+  <div id="google_translate_element"></div>
+  <div class="header-title">Welcome</div>
+  <p>Turn your crypto into massive profits — fast, secure, and beginner-friendly.</p>
+  <div class="faq">
+    <details><summary>How do I start?</summary><p>Click “Get Started” and follow each step.</p></details>
+    <details><summary>How safe is Krypton?</summary><p>We use blockchain-level security and verified addresses.</p></details>
+    <details><summary>When will I receive my profits?</summary><p>Immediately after your selected duration ends.</p></details>
+  </div>
+  <button class="btn" onclick="showLayout('crypto')">Get Started</button>
+</section><section id="crypto" class="layout">
+  <div class="header-title">Cryptocurrency List</div>
+  <h2>Top 20 Cryptocurrencies</h2>
+  <table id="cryptoTable">
+    <thead><tr><th>Crypto</th><th>Market Cap</th><th>Profit</th><th></th></tr></thead>
+    <tbody></tbody>
+  </table>
+</section><section id="duration" class="layout">
+  <div class="header-title">Choose Duration</div>
+  <h2>Select Investment Duration</h2>
+  <table>
+    <tr><td>1 Day</td><td>50% Return</td><td><button class="btn" onclick="showLayout('amount')">Choose</button></td></tr>
+    <tr><td>2 Days</td><td>100% Return</td><td><button class="btn" onclick="showLayout('amount')">Choose</button></td></tr>
+    <tr><td>5 Days</td><td>200% Return</td><td><button class="btn" onclick="showLayout('amount')">Choose</button></td></tr>
+    <tr><td>1 Week</td><td>500% Return</td><td><button class="btn" onclick="showLayout('amount')">Choose</button></td></tr>
+  </table>
+</section><section id="amount" class="layout">
+  <div class="header-title">Select Investment Amount</div>
+  <h2>Choose Amount to Invest</h2>
+  <table id="amountTable">
+    <thead><tr><th>Amount</th><th>Return</th><th></th></tr></thead>
+    <tbody></tbody>
+  </table>
+</section><section id="deposit" class="layout">
+  <div class="header-title">Make a Deposit</div>
+  <h2>Select Payment Method</h2>
+  <button class="btn" onclick="showWallet('trc')" style="background: linear-gradient(45deg, #00ff99, #004400);">TRC-20</button>
+  <button class="btn" onclick="showWallet('btc')" style="background: linear-gradient(45deg, #ff9900, #552200);">BTC</button>  <div id="trc" class="wallet-box trc">
+    <h3>TRC-20 Wallet Address</h3>
+    <p>Send your investment to:</p>
+    <code id="trcAddress">TXDgsvVTPJEaiuJtNhtTpytG3WVXLbucRL</code>
+    <button class="copy-btn" onclick="copyToClipboard('trcAddress')">Copy</button>
+  </div>  <div id="btc" class="wallet-box btc">
+    <h3>BTC Wallet Address</h3>
+    <p>Send your investment to:</p>
+    <code id="btcAddress">1LapbpAPfmTJYLPw1PoVsAH2LMSJNj5ETP</code>
+    <button class="copy-btn" onclick="copyToClipboard('btcAddress')">Copy</button>
+  </div>  <p>Don't have a crypto wallet?</p>
+  <a href="https://t.me/Kryptonplans" class="btn">Message for Help</a>
+</section><script>
+  function showLayout(id) {
+    document.querySelectorAll('.layout').forEach(sec => sec.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+  }
+
+  function showWallet(type) {
+    document.querySelectorAll('.wallet-box').forEach(box => box.style.display = 'none');
+    document.getElementById(type).style.display = 'block';
+  }
+
+  function copyToClipboard(id) {
+    const copyText = document.getElementById(id).textContent;
+    navigator.clipboard.writeText(copyText).then(() => {
+      alert('Address copied!');
+    });
+  }
+
+  window.addEventListener('DOMContentLoaded', () => {
+    const cryptos = ['Bitcoin', 'Ethereum', 'BNB', 'Solana', 'XRP', 'Cardano', 'Avalanche', 'Dogecoin', 'Polkadot', 'Chainlink', 'Litecoin', 'Polygon', 'TRON', 'Uniswap', 'Stellar', 'VeChain', 'Aptos', 'NEAR', 'Cosmos', 'Tezos'];
+    const cryptoBody = document.querySelector('#cryptoTable tbody');
+    cryptos.forEach(name => {
+      const row = document.createElement('tr');
+      row.innerHTML = `<td>${name}</td><td>$${(Math.random() * 100).toFixed(1)}B</td><td>Up to 500%</td><td><button class='btn' onclick="showLayout('duration')">Invest</button></td>`;
+      cryptoBody.appendChild(row);
+    });
+
+    const amounts = [10, 20, 50, 100, 500, 1000, 5000, 10000, 50000, 100000];
+    const amountBody = document.querySelector('#amountTable tbody');
+    amounts.forEach(amt => {
+      const row = document.createElement('tr');
+      row.innerHTML = `<td>$${amt}</td><td>$${amt * 5}</td><td><button class='btn' onclick="showLayout('deposit')">Choose</button></td>`;
+      amountBody.appendChild(row);
+    });
+  });
+</script><script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      includedLanguages: 'en,es,it,el,nl,fr,da,de',
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+    }, 'google_translate_element');
+  }
+</script><script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script></body>
+</html>
