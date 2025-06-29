@@ -1,4 +1,4 @@
-# Chico
+# Krypton investment 
 <!DOCTYPE html>
 <html lang="en">
 <head>
