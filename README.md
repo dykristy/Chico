@@ -21,4 +21,5 @@ Krypton Investment is a Web3-inspired crypto investment web app that simulates a
 - JSON language translator
 - Optional CoinGecko API integration (for live pricing)
 
-## 📁 Project Structure
+## 📁 Live link
+https://kryptoninvestments.netlify.app/
